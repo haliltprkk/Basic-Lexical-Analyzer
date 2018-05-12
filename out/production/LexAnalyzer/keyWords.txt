@@ -1,0 +1,46 @@
+int- int veri turu.
+if- if ayrilmis kelime.
+else- ayrilmis kelime.
+switch- switch ayrilmis kelime.
+case- case ayrilmis kelime.
+float- float ondalikli veri turu.
+double- double ondalikli veri turu.
+=- = esittir operatoru.
+;- ;noktali virgul operatoru.
+(- ( acik parantez.
+)- ) kapali parantez.
+abstract- abstract ayrilmis kelime.
+assert- assert ayrilmis kelime.
+boolean- boolean ayrilmis kelime.
+break- break ayrilmis kelime.
+byte- byte
+catch- catch
+char- char
+class- class
+const- const
+
+continue- continue
+default- default
+do- do
+enum- enum
+extends- extends
+final- final
+finally- finally
+for- for
+goto- goto
+implements- implements
+import- import
+private- private
+protected- protected
+new- new
+public- public
+return- return
+static- static
+super- super
+this- this
+throw- throw
+throws- throws
+try- try
+void- void
+while- while
+try- try
