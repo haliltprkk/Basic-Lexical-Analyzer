@@ -9,16 +9,18 @@ double- double ondalikli veri turu.
 ;- ;noktali virgul operatoru.
 (- ( acik parantez.
 )- ) kapali parantez.
+}- } kapali suslu parantez
+{- { acik suslu parantez
 abstract- abstract ayrilmis kelime.
 assert- assert ayrilmis kelime.
 boolean- boolean ayrilmis kelime.
 break- break ayrilmis kelime.
 byte- byte
 catch- catch
-char- char
+char- char veri turu.
+String- String veri turu.
 class- class
 const- const
-
 continue- continue
 default- default
 do- do

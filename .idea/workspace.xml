@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="431258dc-6cb4-4824-97eb-7d2cc8230476" name="Default" comment="" />
+    <list default="true" id="431258dc-6cb4-4824-97eb-7d2cc8230476" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LexAnalyzer/LexAnalyzer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LexAnalyzer/keyWords.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LexAnalyzer/keyWords.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LexAnalyzer/variableTypes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LexAnalyzer/variableTypes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LexAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LexAnalyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/keyWords.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/keyWords.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/variableTypes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/variableTypes.txt" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,14 +23,20 @@
       <file leaf-file-name="LexAnalyzer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LexAnalyzer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="292" column="53" selection-start-line="292" selection-start-column="53" selection-end-line="292" selection-end-column="53" />
+            <state relative-caret-position="186">
+              <caret line="321" column="25" lean-forward="true" selection-start-line="321" selection-start-column="25" selection-end-line="321" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#main#0;class#LexAnalyzer#0" />
+                <element signature="docComment;class#LexAnalyzer#0" />
+                <element signature="method#readControlStatements#0;class#LexAnalyzer#0" />
+                <element signature="method#readVariableTypes#0;class#LexAnalyzer#0" />
+                <element signature="method#readPunctuations#0;class#LexAnalyzer#0" />
+                <element signature="method#readOperators#0;class#LexAnalyzer#0" />
+                <element signature="method#splitTheInputWithSpace#0;class#LexAnalyzer#0" />
+                <element signature="method#initializeVariableTypes#0;class#LexAnalyzer#0" />
                 <element signature="method#elseControl#0;class#LexAnalyzer#0" />
-                <element signature="method#ifControl#0;class#LexAnalyzer#0" />
-                <element signature="method#elseControl#1;class#LexAnalyzer#0" />
+                <element signature="method#elseIfControl#0;class#LexAnalyzer#0" />
+                <element signature="method#isNum#0;class#LexAnalyzer#0" />
               </folding>
             </state>
           </provider>
@@ -31,7 +45,7 @@
       <file leaf-file-name="LexAnalyzer.java" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/Documents/NetBeansProjects/LexAnalyzer/src/lexanalyzer/LexAnalyzer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
+            <state relative-caret-position="360">
               <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
               <folding>
                 <element signature="e#0#2721#0" expanded="true" />
@@ -52,27 +66,34 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>k</find>
+      <find>spli</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$USER_HOME$/Documents/NetBeansProjects/LexAnalyzer/src/lexanalyzer/LexAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/keyWords.java" />
         <option value="$PROJECT_DIR$/src/LexAnalyzer.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="628" />
-    <option name="y" value="40" />
+    <option name="x" value="384" />
+    <option name="y" value="64" />
     <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="AndroidView" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -101,7 +122,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -199,18 +219,18 @@
       <window_info anchor="right" id="Capture Analysis" order="2" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32843137" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27287582" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32843137" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2647504" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="7" visible="true" weight="0.0" />
+      <window_info anchor="right" id="Ant Build" order="7" weight="0.12178517" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3382353" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
@@ -227,120 +247,240 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>103</line>
-          <properties />
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>105</line>
-          <properties />
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>123</line>
-          <properties />
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>149</line>
+          <line>228</line>
           <properties />
           <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>153</line>
+          <line>232</line>
           <properties />
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>291</line>
-          <properties />
-          <option name="timeStamp" value="156" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>289</line>
-          <properties />
-          <option name="timeStamp" value="157" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>290</line>
-          <properties />
-          <option name="timeStamp" value="158" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>295</line>
-          <properties />
-          <option name="timeStamp" value="163" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>296</line>
-          <properties />
-          <option name="timeStamp" value="164" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>298</line>
-          <properties />
-          <option name="timeStamp" value="165" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>300</line>
-          <properties />
-          <option name="timeStamp" value="166" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>301</line>
-          <properties />
-          <option name="timeStamp" value="167" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>178</line>
+          <line>259</line>
           <properties />
           <option name="timeStamp" value="171" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>349</line>
+          <line>292</line>
           <properties />
-          <option name="timeStamp" value="173" />
+          <option name="timeStamp" value="189" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>177</line>
-          <properties class="LexAnalyzer" method="ifControl">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="61" />
+          <line>291</line>
+          <properties />
+          <option name="timeStamp" value="191" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>91</line>
-          <properties class="LexAnalyzer" method="compareTheInput">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="70" />
+          <line>289</line>
+          <properties />
+          <option name="timeStamp" value="192" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
-          <line>223</line>
-          <properties class="LexAnalyzer" method="switchControl">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="172" />
+          <line>290</line>
+          <properties />
+          <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>288</line>
+          <properties />
+          <option name="timeStamp" value="194" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>285</line>
+          <properties />
+          <option name="timeStamp" value="195" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>286</line>
+          <properties />
+          <option name="timeStamp" value="196" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>283</line>
+          <properties />
+          <option name="timeStamp" value="197" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>284</line>
+          <properties />
+          <option name="timeStamp" value="198" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>282</line>
+          <properties />
+          <option name="timeStamp" value="199" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>281</line>
+          <properties />
+          <option name="timeStamp" value="200" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>280</line>
+          <properties />
+          <option name="timeStamp" value="201" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>279</line>
+          <properties />
+          <option name="timeStamp" value="202" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>278</line>
+          <properties />
+          <option name="timeStamp" value="203" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>277</line>
+          <properties />
+          <option name="timeStamp" value="204" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>276</line>
+          <properties />
+          <option name="timeStamp" value="205" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>275</line>
+          <properties />
+          <option name="timeStamp" value="206" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>273</line>
+          <properties />
+          <option name="timeStamp" value="207" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>266</line>
+          <properties />
+          <option name="timeStamp" value="208" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>264</line>
+          <properties />
+          <option name="timeStamp" value="209" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>262</line>
+          <properties />
+          <option name="timeStamp" value="210" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>261</line>
+          <properties />
+          <option name="timeStamp" value="211" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>260</line>
+          <properties />
+          <option name="timeStamp" value="212" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>200</line>
+          <properties />
+          <option name="timeStamp" value="229" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>201</line>
+          <properties />
+          <option name="timeStamp" value="232" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>203</line>
+          <properties />
+          <option name="timeStamp" value="233" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>205</line>
+          <properties />
+          <option name="timeStamp" value="234" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>299</line>
+          <properties />
+          <option name="timeStamp" value="250" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>298</line>
+          <properties />
+          <option name="timeStamp" value="251" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>301</line>
+          <properties />
+          <option name="timeStamp" value="252" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>302</line>
+          <properties />
+          <option name="timeStamp" value="253" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>303</line>
+          <properties />
+          <option name="timeStamp" value="254" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>168</line>
+          <properties />
+          <option name="timeStamp" value="285" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>169</line>
+          <properties />
+          <option name="timeStamp" value="286" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>170</line>
+          <properties />
+          <option name="timeStamp" value="287" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/LexAnalyzer.java</url>
+          <line>171</line>
+          <properties />
+          <option name="timeStamp" value="288" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="174" />
+      <option name="time" value="289" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -350,14 +490,144 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/LexAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2482">
+          <caret line="146" column="38" selection-start-line="146" selection-start-column="38" selection-end-line="146" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#LexAnalyzer#0" />
+            <element signature="method#readControlStatements#0;class#LexAnalyzer#0" />
+            <element signature="method#readVariableTypes#0;class#LexAnalyzer#0" />
+            <element signature="method#readPunctuations#0;class#LexAnalyzer#0" />
+            <element signature="method#readOperators#0;class#LexAnalyzer#0" />
+            <element signature="method#splitTheInputWithSpace#0;class#LexAnalyzer#0" />
+            <element signature="method#initializeVariableTypes#0;class#LexAnalyzer#0" />
+            <element signature="method#elseControl#0;class#LexAnalyzer#0" />
+            <element signature="method#elseIfControl#0;class#LexAnalyzer#0" />
+            <element signature="method#isNum#0;class#LexAnalyzer#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/NetBeansProjects/LexAnalyzer/src/lexanalyzer/LexAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#2721#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LexAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="120" column="51" lean-forward="true" selection-start-line="120" selection-start-column="51" selection-end-line="120" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#LexAnalyzer#0" />
+            <element signature="method#readControlStatements#0;class#LexAnalyzer#0" />
+            <element signature="method#readVariableTypes#0;class#LexAnalyzer#0" />
+            <element signature="method#readPunctuations#0;class#LexAnalyzer#0" />
+            <element signature="method#readOperators#0;class#LexAnalyzer#0" />
+            <element signature="method#splitTheInputWithSpace#0;class#LexAnalyzer#0" />
+            <element signature="method#initializeVariableTypes#0;class#LexAnalyzer#0" />
+            <element signature="method#elseControl#0;class#LexAnalyzer#0" />
+            <element signature="method#elseIfControl#0;class#LexAnalyzer#0" />
+            <element signature="method#isNum#0;class#LexAnalyzer#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/keyWords.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+          <folding>
+            <element signature="e#285#286#0" expanded="true" />
+            <element signature="e#319#320#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
+            <element signature="e#419#420#0" expanded="true" />
+            <element signature="e#464#465#0" expanded="true" />
+            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#573#574#0" expanded="true" />
+            <element signature="e#633#634#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/NetBeansProjects/LexAnalyzer/src/lexanalyzer/LexAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#2721#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LexAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2516">
+          <caret line="148" column="9" lean-forward="true" selection-start-line="148" selection-start-column="9" selection-end-line="148" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#LexAnalyzer#0" />
+            <element signature="method#readControlStatements#0;class#LexAnalyzer#0" />
+            <element signature="method#readVariableTypes#0;class#LexAnalyzer#0" />
+            <element signature="method#readPunctuations#0;class#LexAnalyzer#0" />
+            <element signature="method#readOperators#0;class#LexAnalyzer#0" />
+            <element signature="method#splitTheInputWithSpace#0;class#LexAnalyzer#0" />
+            <element signature="method#initializeVariableTypes#0;class#LexAnalyzer#0" />
+            <element signature="method#elseControl#0;class#LexAnalyzer#0" />
+            <element signature="method#elseIfControl#0;class#LexAnalyzer#0" />
+            <element signature="method#isNum#0;class#LexAnalyzer#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/keyWords.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="34" lean-forward="true" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+          <folding>
+            <element signature="e#285#286#0" expanded="true" />
+            <element signature="e#319#320#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
+            <element signature="e#419#420#0" expanded="true" />
+            <element signature="e#464#465#0" expanded="true" />
+            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#573#574#0" expanded="true" />
+            <element signature="e#633#634#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/NetBeansProjects/LexAnalyzer/src/lexanalyzer/LexAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#2721#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LexAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4590">
           <caret line="270" column="27" selection-start-line="270" selection-start-column="27" selection-end-line="270" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#main#0;class#LexAnalyzer#0" />
+            <element signature="docComment;class#LexAnalyzer#0" />
+            <element signature="method#readControlStatements#0;class#LexAnalyzer#0" />
+            <element signature="method#readVariableTypes#0;class#LexAnalyzer#0" />
+            <element signature="method#readPunctuations#0;class#LexAnalyzer#0" />
+            <element signature="method#readOperators#0;class#LexAnalyzer#0" />
+            <element signature="method#splitTheInputWithSpace#0;class#LexAnalyzer#0" />
+            <element signature="method#initializeVariableTypes#0;class#LexAnalyzer#0" />
             <element signature="method#elseControl#0;class#LexAnalyzer#0" />
-            <element signature="method#ifControl#0;class#LexAnalyzer#0" />
-            <element signature="method#elseControl#1;class#LexAnalyzer#0" />
+            <element signature="method#elseIfControl#0;class#LexAnalyzer#0" />
+            <element signature="method#isNum#0;class#LexAnalyzer#0" />
           </folding>
         </state>
       </provider>
@@ -379,9 +649,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/keyWords.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+          <folding>
+            <element signature="e#285#286#0" expanded="true" />
+            <element signature="e#319#320#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
+            <element signature="e#419#420#0" expanded="true" />
+            <element signature="e#464#465#0" expanded="true" />
+            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#573#574#0" expanded="true" />
+            <element signature="e#633#634#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/Documents/NetBeansProjects/LexAnalyzer/src/lexanalyzer/LexAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
+        <state relative-caret-position="360">
           <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
           <folding>
             <element signature="e#0#2721#0" expanded="true" />
@@ -391,14 +678,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LexAnalyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="292" column="53" selection-start-line="292" selection-start-column="53" selection-end-line="292" selection-end-column="53" />
+        <state relative-caret-position="186">
+          <caret line="321" column="25" lean-forward="true" selection-start-line="321" selection-start-column="25" selection-end-line="321" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#main#0;class#LexAnalyzer#0" />
+            <element signature="docComment;class#LexAnalyzer#0" />
+            <element signature="method#readControlStatements#0;class#LexAnalyzer#0" />
+            <element signature="method#readVariableTypes#0;class#LexAnalyzer#0" />
+            <element signature="method#readPunctuations#0;class#LexAnalyzer#0" />
+            <element signature="method#readOperators#0;class#LexAnalyzer#0" />
+            <element signature="method#splitTheInputWithSpace#0;class#LexAnalyzer#0" />
+            <element signature="method#initializeVariableTypes#0;class#LexAnalyzer#0" />
             <element signature="method#elseControl#0;class#LexAnalyzer#0" />
-            <element signature="method#ifControl#0;class#LexAnalyzer#0" />
-            <element signature="method#elseControl#1;class#LexAnalyzer#0" />
+            <element signature="method#elseIfControl#0;class#LexAnalyzer#0" />
+            <element signature="method#isNum#0;class#LexAnalyzer#0" />
           </folding>
         </state>
       </provider>
