@@ -19,13 +19,17 @@ public class LexAnalyzer {
     public static ArrayList<String> arrayListVariableTypes = new ArrayList<>();
     public static ArrayList<String> arrayListOperators = new ArrayList<>();
     public static ArrayList<String> arrayListPunctations = new ArrayList<>();
+    public static ArrayList<keyWords> arrayListKeyWords = new ArrayList<>();
+    public static ArrayList<keyWords> arrayListVariables = new ArrayList<>();
+
+
     static String[] parts;
     static String[] inputArray;
     static int reservedWordsNumber = 0;
 
 
     public static void readControlStatements() throws IOException {
-        File f = new File("C:\\Users\\haliltprkk\\IdeaProjects\\LexAnalyzer\\src\\controlStatements.txt");
+        File f = new File("C:\\Users\\haliltprkk\\IdeaProjects\\LexAnalyzer\\src\\keyWords.txt");
         if (!f.exists()) {
             System.out.println("File couldn't find");
             return;
@@ -82,10 +86,13 @@ public class LexAnalyzer {
 
     public static void main(String[] args) throws IOException {
         readControlStatements();
+        readVariableTypes();
+        initializeVariableTypes();
         Scanner input = new Scanner(System.in);
         System.out.println("Type the code :");
         String data = input.nextLine();
         compareTheInput(data);
+        // System.out.println(arrayListVariables.get(1).keywordName);
 
     }
 
@@ -96,32 +103,72 @@ public class LexAnalyzer {
         if ((firstletterValue >= 49) == true && (firstletterValue <= 57) == true) {  //ilk karakterin sayı olıp olmadığını kontrol ediyorum.
             System.out.println("first character can't be numeric!!");
         }
-        boolean isIF = false;
+
+        boolean isIF = false, isSwitch = false, isElseIf = false, isElse = false, consistency = false, error = false, endingWithSemiColon = false, startWithVariableTypes = false;
         for (int i = 0; i < inputArray.length; i++) {
             for (int j = 0; j < arrayListControlStatements.size(); j++) {
                 parts = arrayListControlStatements.get(j).split("-");  //burda dosyadan okuduğum veriyi kullanıcının girdiği verilerle karşılaştırıyorum
                 if (inputArray[i].equals(parts[0])) {
-                    if (inputArray[0].equals("if")) {
-                        isIF = true;
-                        ifControl();
-                        break;
+                    consistency = true;
+                    if (inputArray[0].equals("if") && isIF == false) {
+                        isIF = ifControl();
                     }
-                    if (inputArray[0].equals("else") && !inputArray[1].equals("if")) {
-                        isIF = true;
-                        elseControl();
-                        break;
+                    if (inputArray[0].equals("else") && !inputArray[1].equals("if") && isElse == false) {
+                        isElse = elseControl();
                     }
-                    if (inputArray[0].equals("switch")) {
-                        isIF = true;
-                        switchControl();
-                        break;
+                    if (inputArray[0].equals("switch") && isSwitch == false) {
+                        isSwitch = switchControl();
                     }
-                    if (inputArray[0].equals("else") && inputArray[1].equals("if")) {
-                        isIF = true;
-                        elseIfControl();
-                        break;
+                    if (inputArray[0].equals("else") && inputArray[1].equals("if") && isElseIf == false) {
+                        isElseIf = elseIfControl();
                     }
-                    // System.out.println(parts[0] + " --------" + parts[1]);
+                    if (isElse == false && isElseIf == false && isIF == false && isSwitch == false) {
+                        for (int k = 0; k < arrayListVariables.size(); k++) {
+                            if (inputArray[i].equals(arrayListVariables.get(k).keywordName)) {
+                                if (i != 0) {
+                                    error = true;
+                                    break;
+                                }
+                            }
+                            if (inputArray[0].equals(arrayListVariables.get(k).keywordName)) {
+                                if (inputArray.length < 5 && inputArray[2].equals("=")) {
+                                    error = true;
+                                    break;
+                                }
+                                if (inputArray[2].equals("=")) {
+                                    if (inputArray[0].equals("float") || inputArray[0].equals("double") || inputArray[0].equals("int") || inputArray[0].equals("long")) {
+                                        if (isNum(inputArray[3])) {
+                                            startWithVariableTypes = true;
+                                        } else {
+                                            error = true;
+                                            break;
+                                        }
+                                    } else {
+                                        if (inputArray[3].startsWith("\"") && inputArray[3].endsWith("\"")) {
+                                            startWithVariableTypes = true;
+                                        } else {
+                                            error = true;
+                                            break;
+                                        }
+
+                                    }
+                                    startWithVariableTypes = true;
+                                } else if (!inputArray[2].equals("=") && inputArray.length == 3) {
+                                    startWithVariableTypes = true;
+                                    break;
+                                } else {
+                                    startWithVariableTypes = false;
+                                    error = true;
+                                    break;
+                                }
+
+                            }
+
+                        }
+                    }
+                    if (isElse == true || isElseIf == true || isIF == true || isSwitch == true || startWithVariableTypes == true) {
+                        arrayListKeyWords.add(new keyWords(parts[0], parts[1]));
+                    }
                     //reservedWordsNumber++;
                     /*if (inputArray[arrayMaxSize].endsWith(";")) {
                         System.out.println(parts[0] + " --------" + "; noktali virgül");
@@ -130,11 +177,34 @@ public class LexAnalyzer {
                     }*/
                 }
             }
-            if (isIF) break;
+            if (isElse == false && isElseIf == false && isIF == false && isSwitch == false) {
+                if (inputArray[arrayMaxSize].endsWith(";")) {
+                    endingWithSemiColon = true;
+                } else {
+                    error = true;
+                }
+            }
+            if (consistency == false && i - 2 == inputArray.length) {
+                error = true;
+            }
+            if (arrayListKeyWords.size() == 1 && i - 2 == inputArray.length) {
+                error = true;
+            }
+            //if (isIF) break;
         }
-        System.out.println(inputArray.length - reservedWordsNumber + " adet kullanici tanimli ifade vardir.");
-        System.out.println("-------------------");
-
+        if (arrayListKeyWords.size() == 0) {
+            error = true;
+        }
+        if (error) {
+            System.out.println("Syntax Error");
+        } else {
+            for (int i = 0; i < arrayListKeyWords.size(); i++) {
+                System.out.println(arrayListKeyWords.get(i).getKeywordName() + " -------- " + arrayListKeyWords.get(i).getKeyWordExplanation());
+            }
+            //System.out.println(";" + " -------- " + "; noktali virgul");
+        }
+        /*System.out.println(inputArray.length - reservedWordsNumber + " adet kullanici tanimli ifade vardir.");
+        System.out.println("-------------------");*/
     }
 
     public static String[] splitTheInputWithSpace(String data) {
@@ -142,11 +212,20 @@ public class LexAnalyzer {
         return inputArray;
     }
 
-    public static void elseControl() {
+    public static ArrayList<keyWords> initializeVariableTypes() {
+        for (int i = 0; i < arrayListVariableTypes.size(); i++) {
+            String split[] = arrayListVariableTypes.get(i).split("-");
+            arrayListVariables.add(new keyWords(split[0], split[1]));
+        }
+        return arrayListVariables;
+
+    }
+
+
+    public static boolean elseControl() {
         int flag = 0;
         int arrayMaxSize = inputArray.length;
         boolean cntl1 = false, cntl2 = false;
-        System.out.println(parts[0] + " --------" + parts[1]);
         reservedWordsNumber++;
 
 
@@ -161,21 +240,23 @@ public class LexAnalyzer {
             reservedWordsNumber++;
         }
 
-        if (inputArray[arrayMaxSize-1].endsWith("}")) {
+        if (inputArray[arrayMaxSize - 1].endsWith("}")) {
             cntl2 = true;
             reservedWordsNumber++;
         }
         if (cntl1 == true && cntl2 == true) {
 
-            System.out.println("{" + " --------" + "{ acik süslü parantez");
-            System.out.println("}" + " --------" + "} kapali süslü parantez");
+            //System.out.println(parts[0] + " --------" + parts[1]);
+            /*System.out.println("{" + " --------" + "{ acik süslü parantez");
+            System.out.println("}" + " --------" + "} kapali süslü parantez");*/
+            return true;
         } else {
-            System.out.println("Syntax error");
-            return;
+            // System.out.println("Syntax error");
+            return false;
         }
     }
 
-    public static void ifControl() {
+    public static boolean ifControl() {
         int flag = 0, flag2 = 0;
         int arrayMaxSize = inputArray.length;
         boolean cntl1 = false, cntl2 = false, cntl3 = false, cntl4 = false, cntl5 = false, cntl6 = false, cntl7 = false;
@@ -205,23 +286,24 @@ public class LexAnalyzer {
             reservedWordsNumber++;
         }
 
-        if (inputArray[arrayMaxSize-1].endsWith("}")) {
+        if (inputArray[arrayMaxSize - 1].endsWith("}")) {
             cntl4 = true;
             reservedWordsNumber++;
         }
         if (cntl1 == true && cntl2 == true && cntl3 == true && cntl4 == true) {
-            System.out.println(parts[0] + " --------" + parts[1]);
+           /* System.out.println(parts[0] + " --------" + parts[1]);
             System.out.println("(" + " --------" + "( acik parantez");
             System.out.println(")" + " --------" + ") kapali parantez");
             System.out.println("{" + " --------" + "{ acik süslü parantez");
-            System.out.println("}" + " --------" + "} kapali süslü parantez");
+            System.out.println("}" + " --------" + "} kapali süslü parantez");*/
+            return true;
         } else {
-            System.out.println("Syntax error");
-            return;
+            // System.out.println("Syntax error");
+            return false;
         }
     }
 
-    public static void switchControl() {
+    public static boolean switchControl() {
         int flag = 0, flag2 = 0, flag3 = 0, flag4 = 0, flag5 = 0, countColons = 0, countCase = 0, countSemiColon = 0;
         int arrayMaxSize = inputArray.length;
         boolean cntl1 = false, cntl2 = false, cntl3 = false, cntl4 = false, cntl5 = false, cntl6 = false, cntl7 = false;
@@ -284,24 +366,25 @@ public class LexAnalyzer {
             reservedWordsNumber++;
         }
 
-        if (inputArray[arrayMaxSize-1].endsWith("}")) {
+        if (inputArray[arrayMaxSize - 1].endsWith("}")) {
             cntl7 = true;
             reservedWordsNumber++;
         }
-        if (cntl1 == true && cntl2 == true && cntl3 == true && cntl4 == true && cntl5 == true && cntl6 == true && cntl7 == true && (countCase == countColons && countCase == countSemiColon) == true){
-            System.out.println(parts[0] + " --------" + parts[1]);
-            System.out.println(countCase+" adet case,ikinokta ve noktali virgul bulunmustur.");
+        if (cntl1 == true && cntl2 == true && cntl3 == true && cntl4 == true && cntl5 == true && cntl6 == true && cntl7 == true && (countCase == countColons && countCase == countSemiColon) == true) {
+           /* System.out.println(parts[0] + " --------" + parts[1]);
+            System.out.println(countCase + " adet case,iki nokta ve noktali virgul bulunmustur.");
             System.out.println("(" + " --------" + "( acik parantez");
             System.out.println(")" + " --------" + ") kapali parantez");
             System.out.println("{" + " --------" + "{ acik süslü parantez");
-            System.out.println("}" + " --------" + "} kapali süslü parantez");
-        } else{
-            System.out.println("Syntax error");
-            return;
+            System.out.println("}" + " --------" + "} kapali süslü parantez");*/
+            return true;
+        } else {
+            //   System.out.println("Syntax error");
+            return false;
         }
     }
 
-    public static void elseIfControl() {
+    public static boolean elseIfControl() {
         int flag = 0, flag2 = 0;
         int arrayMaxSize = inputArray.length;
         boolean cntl1 = false, cntl2 = false, cntl3 = false, cntl4 = false;
@@ -332,21 +415,33 @@ public class LexAnalyzer {
             reservedWordsNumber++;
         }
 
-        if (inputArray[arrayMaxSize-1].endsWith("}")) {
+        if (inputArray[arrayMaxSize - 1].endsWith("}")) {
             cntl4 = true;
             reservedWordsNumber++;
         }
         if (cntl1 == true && cntl2 == true && cntl3 == true && cntl4 == true) {
-            System.out.println(parts[0] + " --------" + parts[1]);
+           /* System.out.println(parts[0] + " --------" + parts[1]);
             System.out.println("if" + " --------" + "if ayrilmis kelime");
             System.out.println("(" + " --------" + "( acik parantez");
             System.out.println(")" + " --------" + ") kapali parantez");
             System.out.println("{" + " --------" + "{ acik süslü parantez");
-            System.out.println("}" + " --------" + "} kapali süslü parantez");
+            System.out.println("}" + " --------" + "} kapali süslü parantez");*/
+            return true;
         } else {
-            System.out.println("Syntax error");
-            return;
+            //     System.out.println("Syntax error");
+            return false;
         }
     }
 
+    public static boolean isNum(String strNum) {
+        boolean ret = true;
+        try {
+
+            Double.parseDouble(strNum);
+
+        } catch (NumberFormatException e) {
+            ret = false;
+        }
+        return ret;
+    }
 }

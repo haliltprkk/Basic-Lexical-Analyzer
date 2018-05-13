@@ -1,0 +1,7 @@
+int- int veri turu.
+float- float veri turu.
+double- double veri turu.
+char- char veri turu.
+unsigned int- unsigned int veri turu.
+String- String veri turu.
+long- long veri turu.
